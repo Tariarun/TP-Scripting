@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+
+namespace TP_001_Codding
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string chaine = "AacaAchfgdjcer";
+
+            Console.WriteLine(ToString(ToList(chaine, 'c')));
+        }
+        //La fonction ToList() répond à la question 1
+        static List<string> ToList(string chaine, char c)
+        {
+            List<string> list = new List<string>();
+            string str = "";
+            int Int = 0;
+
+            for (int i = 0; i < chaine.Length; i++)
+            {
+                if (chaine[i] == c)
+                {
+
+                    list.Add(str);
+                    str = "";
+                    Int++;
+                }
+                else
+                {
+                    str = str + chaine[i];
+                }
+
+            }
+            list.Add(str);
+            return list;
+        }
+        //transforme une liste de string en string où chaque élément est séparé d'une virgule
+        static String ToString(List<string> l)
+        {
+            string result = "(";
+            for (int i = 0; i < l.Count; i++)
+            {
+                result += l[i];
+                result += i == l.Count - 1 ? "" : ", ";
+            }
+            return result + ")";
+        }
+    }
+}
